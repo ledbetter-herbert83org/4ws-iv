@@ -4,7 +4,8 @@ on:
  
 jobs:
  node-server-build:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -22,7 +23,8 @@ jobs:
                 echo $?
 
  server-control:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: node-server-build
     strategy:
       fail-fast: false
@@ -41,7 +43,8 @@ jobs:
                 echo $?
 
  clean-server:
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: always()
     needs: [server-control, node-server-build]
     timeout-minutes: 360
